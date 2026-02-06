@@ -6,8 +6,8 @@ const output = document.querySelector(".output");
 const btn = document.querySelector(".btn");
 
 btn.addEventListener("click", (e) => {
-  console.log(cur);
-  console.log(questions.length);
+  newQuestion();
+  btn.style.display = "none";
 });
 
 const cur = 0; // current question
@@ -16,6 +16,17 @@ window.addEventListener("DOMContentLoaded", () => {
   //   console.log("ready");
   loadQuestions();
 });
+
+function newQuestion() {
+  console.log(cur);
+  console.log(questions.length);
+  console.log(questions[cur]);
+  const el = questions[cur];
+  const que1 = document.createElement("div");
+  que1.textContent = el.question;
+
+  output.append(que1);
+}
 
 function loadQuestions() {
   fetch(url)
@@ -53,3 +64,4 @@ function loadQuestions() {
       //document.body.innerText = JSON.stringify(questions, null, 2);
     });
 }
+
