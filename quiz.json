@@ -1,1 +1,13 @@
+[
+  {
+    "question": "What color is the sky",
+    "correct": "blue",
+    "incorrect": ["green", "red", "pink", "purple"]
+  },
+  {
+    "question": "What color is the grass",
+    "correct": "green",
+    "incorrect": ["blue", "red", "pink", "purple"]
+  }
+]
 
