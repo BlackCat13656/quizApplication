@@ -21,11 +21,21 @@ function newQuestion() {
   console.log(cur);
   console.log(questions.length);
   console.log(questions[cur]);
+  output.innerHTML = "";
   const el = questions[cur];
   const que1 = document.createElement("div");
+  const ans1 = document.createElement("div");
   que1.textContent = el.question;
-
+  el.options.forEach((ans) => {
+    const div = document.createElement("div");
+    div.textContent = ans.response;
+    div.addEventListener("click", (e) => {
+      console.log(ans.correct);
+    });
+    ans1.append(div);
+  });
   output.append(que1);
+  output.append(ans1);
 }
 
 function loadQuestions() {
