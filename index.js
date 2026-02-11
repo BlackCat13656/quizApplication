@@ -18,11 +18,16 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function newQuestion() {
+  const el = questions[cur];
+  el.options.sort(() => {
+    return 0.5 - Math.random();
+  });
+
   console.log(cur);
   console.log(questions.length);
   console.log(questions[cur]);
   output.innerHTML = "";
-  const el = questions[cur];
+
   const que1 = document.createElement("div");
   const ans1 = document.createElement("div");
   que1.textContent = el.question;
