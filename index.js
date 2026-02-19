@@ -29,11 +29,16 @@ function newQuestion() {
   output.innerHTML = "";
 
   const que1 = document.createElement("div");
+  que1.classList.add("que");
+  let strOutput = el.question;
+  strOutput = strOutput.charAt(0).toUpperCase() + strOutput.slice(1);
   const ans1 = document.createElement("div");
-  que1.textContent = el.question;
+  que1.textContent = strOutput + "?";
+
   el.options.forEach((ans) => {
     const div = document.createElement("div");
     div.textContent = ans.response;
+    div.classList.add("box");
     div.addEventListener("click", (e) => {
       console.log(ans.correct);
     });
@@ -79,4 +84,3 @@ function loadQuestions() {
       //document.body.innerText = JSON.stringify(questions, null, 2);
     });
 }
-
