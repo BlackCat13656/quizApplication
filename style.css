@@ -4,7 +4,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 5px;
   min-width: 100px;
   text-align: center;
 }
@@ -17,4 +17,3 @@
   font-size: 1.8em;
   margin: 15px;
 }
-
