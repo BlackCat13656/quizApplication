@@ -4,13 +4,13 @@ const url = "quiz.json";
 const questions = [];
 const output = document.querySelector(".output");
 const btn = document.querySelector(".btn");
+let cur = 0;
+const holder = [];
 
 btn.addEventListener("click", (e) => {
   newQuestion();
   btn.style.display = "none";
 });
-
-const cur = 0; // current question
 
 window.addEventListener("DOMContentLoaded", () => {
   //   console.log("ready");
@@ -33,19 +33,38 @@ function newQuestion() {
   let strOutput = el.question;
   strOutput = strOutput.charAt(0).toUpperCase() + strOutput.slice(1);
   const ans1 = document.createElement("div");
+  holder.length = 0;
   que1.textContent = strOutput + "?";
 
   el.options.forEach((ans) => {
     const div = document.createElement("div");
+    holder.push(div);
     div.textContent = ans.response;
     div.classList.add("box");
-    div.addEventListener("click", (e) => {
-      console.log(ans.correct);
-    });
+    div.correct = ans.correct;
+    div.addEventListener("click", selOption);
     ans1.append(div);
   });
+
   output.append(que1);
   output.append(ans1);
+}
+
+function selOption(e) {
+  endTurn();
+  if (e.target.correct) {
+    e.target.style.backgroundColor = "green";
+  } else {
+    e.target.style.backgroundColor = "red";
+  }
+  e.target.style.color = "white";
+}
+
+function endTurn() {
+  holder.forEach((el) => {
+    el.removeEventListener("click", selOption);
+    el.style.backgroundColor = "#ddd";
+  });
 }
 
 function loadQuestions() {
@@ -84,3 +103,4 @@ function loadQuestions() {
       //document.body.innerText = JSON.stringify(questions, null, 2);
     });
 }
+
